@@ -189,7 +189,7 @@ The inner working of your `train_nn` function should follow this order of action
 3. In each iteration we will collect the gradient error matrices for each data point. Start by initializing `dE1_total` and `dE2_total` as zero matrices with the same shape as `W1` and `W2` respectively.
 4. Run a loop over all the data points in `X_train`. In each iteration we call backprop to get the gradient error matrices and the output values.
 5. Once we have collected the error gradient matrices for all the data points, we adjust the weights in `W1` and `W2`, using `W1 = W1 - eta * dE1_total / N` where `N` is the number of data points in `X_train` (and similarly for `W2`).
-6. For the error estimation we'll use the cross-entropy error function, *(Eq. 4.90 in Bishop)*.
+6. For error estimation, we report the average cross-entropy per sample `E_total.append(total_loss / N)`.
 7. When the outer loop finishes, we return from the function
 
 Example inputs and outputs:
