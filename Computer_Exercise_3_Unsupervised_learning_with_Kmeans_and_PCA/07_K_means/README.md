@@ -16,19 +16,18 @@ The K-means algorithm has the following steps:
     * Determine $r_{nk}$ for each point $x_n$. We set $r_{nk}=1$ and $r_{nj}=0, j\neq k$ if we decided $x_n$ belongs to $k$. Typically we make this
     determination by choosing the $\mu_k$ closest to $x_n$.
 3. We then calculate the value of $J$, our objective function:
-    $$
-        J  = \sum_{n=1}^N \sum_{k=1}^K r_{nk} ||x_n - \mu_k ||^2
-    $$
+
+    $J  = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \Vert x_n - \mu_k  \Vert ^2$
+
    our goal is to find values for all $r_{nk}$ and all $\mu_k$ (our parameters) to minimize the value of $J$.
    Here, we will be using the average distance from the points to their cluster means as the objective value (let's call it $\hat{J}$).
-   $$
-   \hat{J} = \frac{1}{N}\sum_{n=1}^N \sum_{k=1}^K r_{nk} || x_n - \mu_k ||
-   $$
-4. *M-step* We now recompute the value of the prototypes:
-    $$
-        \mu_k = \frac{\sum_n r_{nk} x_n}{\sum_n r_{nk}}
-    $$
-5. Compare the current value of $\hat{J}$ to the previous value of $\hat{J}$. If the difference is above a certain threshold, we perform steps 2-4 again. Otherwise we continue up to a maximum number of iterations.
+
+   $\hat{J} = \frac{1}{N}\sum_{n=1}^N \sum_{k=1}^K r_{nk} \Vert x_n - \mu_k \Vert$
+
+5. *M-step* We now recompute the value of the prototypes:
+
+   $$\mu_k = \frac{\sum_n r_{nk} x_n}{\sum_n r_{nk}}$$
+7. Compare the current value of $\hat{J}$ to the previous value of $\hat{J}$. If the difference is above a certain threshold, we perform steps 2-4 again. Otherwise we continue up to a maximum number of iterations.
 
 We will now create the building blocks of the algorithm and then put them together.
 
